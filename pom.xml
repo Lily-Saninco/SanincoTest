@@ -3,7 +3,7 @@
   <groupId>SanincoTest</groupId>
   <artifactId>SanincoTest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+
     <dependencies>
   	<dependency>
   		<groupId>org.seleniumhq.selenium</groupId>
@@ -20,6 +20,12 @@
   		<artifactId>junit</artifactId>
   		<version>4.12</version>
   	</dependency>
+  	<dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.9.8</version>
+      <scope>test</scope>
+    </dependency>
   	<dependency>
   		<groupId>log4j</groupId>
   		<artifactId>log4j</artifactId>
