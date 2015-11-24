@@ -9,6 +9,7 @@ public class SanityTest {
 	public static void main(String[] args) {
 
 	WebDriver driver = new FirefoxDriver();
+	System.out.println("i hope jenkins work!");
 	driver.get("http://192.168.1.77:8080/Club");
 	driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 
