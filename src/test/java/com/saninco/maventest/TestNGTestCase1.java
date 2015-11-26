@@ -18,7 +18,7 @@ public class TestNGTestCase1 {
 		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 
 		WebElement username=driver.findElement(By.id("j_username"));
-		username.sendKeys("user3");
+		username.sendKeys("judge1");
 		WebElement password=driver.findElement(By.id("j_password"));
 		password.sendKeys("1");
 		WebElement loginButton=driver.findElement(By.cssSelector(".loginbut.pmar>a"));
