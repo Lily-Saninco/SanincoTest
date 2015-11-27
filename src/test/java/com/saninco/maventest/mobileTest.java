@@ -18,6 +18,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 
 
 
@@ -25,9 +26,18 @@ import io.appium.java_client.android.AndroidDriver;
 public class mobileTest {
   @Test
   public void androidClubLogin() throws InterruptedException, ExecuteException, IOException {
-	  AndroidDriver driver;	  
+	  AndroidDriver diver1;	  
+	  AndroidDriver diver2;	  
 	  
-	  System.out.println("****************setUP Starts****************");
+	  /*
+	   *  this paragraph can start the appium from script
+	   *  but i don't need it execute right now , so i just put this here for experinece
+	   *  I put appium start inside the batch file
+	   * 
+	   */
+	  
+/* 
+	 System.out.println("****************setUP Starts****************");
 
 	  System.out.println("ANDROID_HOME:"+System.getenv("ANDROID_HOME"));
 	  System.out.println("PATH : "+System.getenv("PATH"));
@@ -60,7 +70,7 @@ public class mobileTest {
 	  executor.execute(command, resultHandler);
 
 	  Thread.sleep(20000);  
-  
+  */
 	  
 	  
 	  File classpathRoot = new File(System.getProperty("user.dir"));
@@ -68,10 +78,11 @@ public class mobileTest {
 		File app = new File(appDir, "SPSApp7.apk");
 		
 		System.out.println("-----------------");
+		
 	
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-		capabilities.setCapability("deviceName", "MyDevice");
+		capabilities.setCapability("deviceName", "MyNewDevice");
 		//capabilities.setCapability("deviceName", "SM-G730W8");
 		capabilities.setCapability("platformVersion", "4.4.2");
 		//capabilities.setCapability("platformVersion", "4.2.2");
@@ -79,18 +90,44 @@ public class mobileTest {
 		capabilities.setCapability("app", app.getAbsolutePath());
 		capabilities.setCapability("appPackage", "com.sps");
 		capabilities.setCapability("appActivity", "actvity.SPSAppActivity");
-
-		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+		capabilities.setCapability("udid", "emulator-5556");
+		
+		diver1 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		diver1.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 		Thread.sleep(10000);
-		WebElement username=driver.findElementById("com.sps:id/username");
-		username.sendKeys("judge3");
-		WebElement password=driver.findElementById("com.sps:id/password");
+		WebElement username=diver1.findElementById("com.sps:id/username");
+		username.sendKeys("judge1");
+		WebElement password=diver1.findElementById("com.sps:id/password");
 		password.sendKeys("1");
-		WebElement loginButton=driver.findElement(By.className("android.widget.Button"));
+		WebElement loginButton=diver1.findElement(By.className("android.widget.Button"));
 		loginButton.click();
 		
+		DesiredCapabilities capabilities2 = new DesiredCapabilities();
+		capabilities2.setCapability(CapabilityType.BROWSER_NAME, "");
+		//capabilities2.setCapability("deviceName", "MyDevice");
+		capabilities2.setCapability(MobileCapabilityType.DEVICE_NAME, "MyDevice");
+		//capabilities2.setCapability("deviceName", "SM-G730W8");
+		capabilities2.setCapability("platformVersion", "4.4.2");
+		//capabilities2.setCapability("platformVersion", "4.2.2");
+		capabilities2.setCapability("platformName", "Android");
+		capabilities2.setCapability("app", app.getAbsolutePath());
+		capabilities2.setCapability("appPackage", "com.sps");
+		capabilities2.setCapability("appActivity", "actvity.SPSAppActivity");
+		
+		diver2 = new AndroidDriver(new URL("http://127.0.0.1:4725/wd/hub"), capabilities2);
+		diver2.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+		Thread.sleep(10000);
+		WebElement username2=diver2.findElementById("com.sps:id/username");
+		username2.sendKeys("judge3");
+		WebElement password2=diver2.findElementById("com.sps:id/password");
+		password2.sendKeys("1");
+		WebElement loginButton2=diver2.findElement(By.className("android.widget.Button"));
+		loginButton2.click();
+		
+	
+
+		
 		// find keyword Ê×Ò³ and verify it is display
-        //Assert.assertTrue(driver.findElement(By.name("Ê×Ò³")).isDisplayed());
+        //Assert.assertTrue(diver1.findElement(By.name("Ê×Ò³")).isDisplayed());
   }
 }
