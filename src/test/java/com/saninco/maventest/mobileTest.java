@@ -115,7 +115,7 @@ public class mobileTest {
 		capabilities2.setCapability("appActivity", "actvity.SPSAppActivity");
 		capabilities2.setCapability("udid", "emulator-5556");
 		
-		diver2 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities2);
+		diver2 = new AndroidDriver(new URL("http://127.0.0.1:4725/wd/hub"), capabilities2);
 		diver2.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 		Thread.sleep(10000);
 		WebElement username2=diver2.findElementById("com.sps:id/username");
@@ -139,7 +139,7 @@ public class mobileTest {
 		capabilities3.setCapability("appActivity", "actvity.SPSAppActivity");
 		capabilities3.setCapability("udid", "emulator-5554");
 		
-		diver3 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities3);
+		diver3 = new AndroidDriver(new URL("http://127.0.0.1:4727/wd/hub"), capabilities3);
 		diver3.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 		Thread.sleep(10000);
 		WebElement username3=diver3.findElementById("com.sps:id/username");
