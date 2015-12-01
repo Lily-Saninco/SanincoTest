@@ -28,7 +28,7 @@ public class mobileTest {
   public void androidClubLogin() throws InterruptedException, ExecuteException, IOException {
 	  AndroidDriver diver1;	  
 	  AndroidDriver diver2;	  
-	  
+	  AndroidDriver diver3;	 
 	  /*
 	   *  this paragraph can start the appium from script
 	   *  but i don't need it execute right now , so i just put this here for experinece
@@ -84,13 +84,13 @@ public class mobileTest {
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
 		capabilities.setCapability("deviceName", "MyNewDevice");
 		//capabilities.setCapability("deviceName", "SM-G730W8");
-		capabilities.setCapability("platformVersion", "4.4.2");
+		//capabilities.setCapability("platformVersion", "4.4.2");
 		//capabilities.setCapability("platformVersion", "4.2.2");
 		capabilities.setCapability("platformName", "Android");
 		capabilities.setCapability("app", app.getAbsolutePath());
 		capabilities.setCapability("appPackage", "com.sps");
 		capabilities.setCapability("appActivity", "actvity.SPSAppActivity");
-		capabilities.setCapability("udid", "emulator-5556");
+		capabilities.setCapability("udid", "emulator-5558");
 		
 		diver1 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		diver1.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
@@ -113,16 +113,41 @@ public class mobileTest {
 		capabilities2.setCapability("app", app.getAbsolutePath());
 		capabilities2.setCapability("appPackage", "com.sps");
 		capabilities2.setCapability("appActivity", "actvity.SPSAppActivity");
+		capabilities2.setCapability("udid", "emulator-5556");
 		
-		diver2 = new AndroidDriver(new URL("http://127.0.0.1:4725/wd/hub"), capabilities2);
+		diver2 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities2);
 		diver2.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 		Thread.sleep(10000);
 		WebElement username2=diver2.findElementById("com.sps:id/username");
-		username2.sendKeys("judge3");
+		username2.sendKeys("judge2");
 		WebElement password2=diver2.findElementById("com.sps:id/password");
 		password2.sendKeys("1");
 		WebElement loginButton2=diver2.findElement(By.className("android.widget.Button"));
 		loginButton2.click();
+		
+		
+		DesiredCapabilities capabilities3 = new DesiredCapabilities();
+		capabilities3.setCapability(CapabilityType.BROWSER_NAME, "");
+		//capabilities3.setCapability("deviceName", "MyDevice");
+		capabilities3.setCapability(MobileCapabilityType.DEVICE_NAME, "MyDevice3");
+		//capabilities3.setCapability("deviceName", "SM-G730W8");
+		//capabilities3.setCapability("platformVersion", "5.4.2");
+		//capabilities3.setCapability("platformVersion", "4.2.2");
+		capabilities3.setCapability("platformName", "Android");
+		capabilities3.setCapability("app", app.getAbsolutePath());
+		capabilities3.setCapability("appPackage", "com.sps");
+		capabilities3.setCapability("appActivity", "actvity.SPSAppActivity");
+		capabilities3.setCapability("udid", "emulator-5554");
+		
+		diver3 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities3);
+		diver3.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+		Thread.sleep(10000);
+		WebElement username3=diver3.findElementById("com.sps:id/username");
+		username3.sendKeys("judge3");
+		WebElement password3=diver3.findElementById("com.sps:id/password");
+		password3.sendKeys("1");
+		WebElement loginButton3=diver3.findElement(By.className("android.widget.Button"));
+		loginButton3.click();
 		
 	
 
